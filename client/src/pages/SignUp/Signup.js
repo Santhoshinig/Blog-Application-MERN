@@ -19,29 +19,33 @@ const SignUp = () => {
 
     const history = useHistory();
 
-    const submitHandler = async (event) => {
-        event.preventDefault();
-        setErrors(null)
+   const submitHandler = async (event) => {
+     event.preventDefault();
+     setErrors(null);
 
-        const enteredName = userRef.current.value;
-        const enteredEmail = emailRef.current.value;
-        const enteredPassword = passwordRef.current.value;
+     const enteredName = userRef.current.value;
+     const enteredEmail = emailRef.current.value;
+     const enteredPassword = passwordRef.current.value;
 
-        try{
-           const res =  await axiosInstance.post("auth/register", {
-                username: enteredName,
-                email: enteredEmail,
-                password: enteredPassword
-            })
-            console.log(res);
-            res.data && history.replace("/signin")
-        } catch (err) {
-            console.log(err.response.data.msg)
-            const msg = err.response.data.msg
-            setErrors(msg)
-        }
-
-    }
+     try {
+       const res = await axiosInstance.post("auth/register", {
+         username: enteredName,
+         email: enteredEmail,
+         password: enteredPassword,
+       });
+       console.log(res);
+       res.data && history.replace("/signin");
+     } catch (err) {
+       if (err.response) {
+         console.log(err.response.data.msg);
+         const msg = err.response.data.msg;
+         setErrors(msg);
+       } else {
+         console.error("An unexpected error occurred:", err.message);
+         setErrors("An unexpected error occurred. Please try again later.");
+       }
+     }
+   };
 
     return (
         <div className="signupPage">
