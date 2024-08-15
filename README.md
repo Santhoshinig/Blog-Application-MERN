@@ -1,6 +1,6 @@
 # MERN-BLOG-App
 
-![Blog SCREENSHOT]([https://drive.google.com/uc?export=view&id=your-file-id](https://drive.google.com/file/d/1ykuuKViTWtkJXq1YL2iSGqmlhdhGysCw/view?usp=sharing))
+![Description](https://drive.google.com/drive/folders/1dmDECDNQyLPClE3C5Hm0EHLNQRPoDe0n?usp=sharing)
 
 
 ## Project Documentation
