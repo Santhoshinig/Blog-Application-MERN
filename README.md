@@ -1,6 +1,7 @@
 # MERN-BLOG-App
 
-![Screenshot 2022-04-15 231639](https://drive.google.com/file/d/1ykuuKViTWtkJXq1YL2iSGqmlhdhGysCw/view?usp=sharing)
+![Blog SCREENSHOT](https://drive.google.com/uc?export=view&id=your-file-id)
+
 
 ## Project Documentation
 
