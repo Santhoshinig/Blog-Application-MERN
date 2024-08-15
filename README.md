@@ -1,6 +1,6 @@
 # MERN-BLOG-App
 
-![Alt text]()
+![Alt text](Screenshot 2024-08-15 133620.png)
 
 
 
