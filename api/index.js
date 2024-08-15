@@ -1,37 +1,55 @@
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
-const path = require("path"); 
+const path = require("path");
 const env = require("dotenv");
-const mongoose = require("mongoose"); 
-const authRoute = require("./routes/auth")
-const postRoute = require("./routes/posts")
+const mongoose = require("mongoose");
+const cors = require("cors");
 
-env.config(); 
-app.use(express.json())
-app.use(bodyParser.urlencoded({extended: true}));
+// Load environment variables
+env.config();
 
-mongoose.connect(process.env.MONGO_URL, {
+// Connect to MongoDB
+mongoose
+  .connect(process.env.MONGO_URL, {
     useNewUrlParser: true,
-    useUnifiedTopology: true
-}).then(console.log("connected to mongodb")).catch(err => console.log(err));
+    useUnifiedTopology: true,
+  })
+  .then(() => console.log("Connected to MongoDB"))
+  .catch((err) => console.error("Failed to connect to MongoDB:", err));
 
-app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
-    next();
-  });
+// CORS setup
 
-app.use("/api/auth", authRoute)
-app.use("/api/posts", postRoute)
 
+//const allowedOrigins = ["http://localhost:3000"];
+app.use(
+  cors({
+    origin: "https://localhost:3000", // Allow this origin to access the resources
+    methods: "GET,POST,PUT,DELETE", // Specify the allowed methods
+  })
+);
+
+// Handle preflight requests
+app.options("*", cors());
+
+
+// Parse JSON and URL-encoded data
+app.use(express.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+// Routes
+app.use("/api/auth/register", require("./routes/auth"));
+app.use("/api/posts", require("./routes/posts"));
+
+// Serve static files from the React app
 app.use(express.static(path.join(__dirname, "/client/build")));
 
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '/client/build', 'index.html'));
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "/client/build", "index.html"));
 });
 
-app.listen(process.env.PORT || 5000, () => {
-    console.log("Backend is running");
-})
+// Start the server
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`Backend is running on port ${PORT}`);
+});
