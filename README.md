@@ -1,6 +1,7 @@
 # MERN-BLOG-App
 
-![Description](https://drive.google.com/drive/folders/1dmDECDNQyLPClE3C5Hm0EHLNQRPoDe0n?usp=sharing)
+![Alt text]()
+
 
 
 ## Project Documentation
