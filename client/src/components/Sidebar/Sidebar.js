@@ -1,4 +1,4 @@
-import pc from "./pc.jpg"
+import pc from "./pc.avif"
 
 import "./Sidebar.scss"
 
@@ -10,7 +10,7 @@ const Sidebar = (props) => {
 
         <img src={pc} alt="" className="sidebar__image" />
 
-        <p className="sidebar__paragraph">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci corporis doloremque sapiente omnis consequatur officia dolorum nesciunt dolorem. Quo expedita vero eius, nemo velit omnis saepe aut eligendi alias ut!</p>
+        <p className="sidebar__paragraph">The "Neutronzz" blog application appears to be a platform designed for sharing blog posts, articles, or other content, possibly related to technology, science, or a niche community, given the name "Neutronzzz" which may evoke themes of energy, particles, or advanced topics.</p>
     </div>;
 }
 
