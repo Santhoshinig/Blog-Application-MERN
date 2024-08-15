@@ -1,6 +1,6 @@
 # MERN-BLOG-App
 
-![Alt text](Screenshot 2024-08-15 133620.png)
+![Alt text](https://github.com/Santhoshinig/Blog-Application-MERN/blob/main/Screenshot%202024-08-15%20133620.png)
 
 
 
